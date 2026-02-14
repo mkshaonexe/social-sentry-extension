@@ -1,0 +1,37 @@
+# Social Sentry — Focus Mode Extension
+
+**Social Sentry** is a unified Chrome extension designed to eliminate distractions on Facebook and YouTube. It provides global controls to block short-form videos, home feeds, and notification badges, helping you stay focused and productive.
+
+Developed by **MK Shaon**.
+
+## Features
+
+### 🛡️ Global Focus Control
+- **Block Short Videos**: One toggle to block **Facebook Reels**, **Facebook Stories**, and **YouTube Shorts**.
+  - *Effect*: Hides UI elements and redirects Shorts URLs to the home page.
+- **Hide Feeds**: One toggle to hide **Facebook Home Feed** and **YouTube Home Feed & Recommendations**.
+  - *Effect*: Keeps sidebars clean and removes algorithmic feeds.
+- **Hide Notifications**: One toggle to hide **Facebook Notification Badges**.
+  - *Effect*: Visual clutter and red badges are removed.
+
+### 🚀 Extras (Platform Specific)
+- **YouTube Comments**: Hide the comments section on YouTube.
+- **Motivation Mode**: (Beta) Displays a random motivational quote on the YouTube home page.
+
+## Installation
+
+1. Clone or download this repository.
+2. Open Chrome and navigate to `chrome://extensions`.
+3. Enable **Developer mode** (top right).
+4. Click **Load unpacked**.
+5. Select the `social-sentry` folder from this repository.
+
+## Development
+
+- **Manifest V3**
+- **Unified Logic**: Shared `chrome.storage` keys for global features.
+- **Premium UI**: Dark mode, glassmorphism, and smooth animations.
+
+## Privacy
+
+Social Sentry runs entirely on your device. No data is collected or transmitted.

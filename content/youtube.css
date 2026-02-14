@@ -1,0 +1,73 @@
+/* Social Sentry - YouTube CSS Hiding Rules */
+
+/* 1. Hide Shorts UI */
+body.hide-shorts-enabled ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
+/* Shorts Shelf on Home */
+body.hide-shorts-enabled ytd-reel-shelf-renderer,
+body.hide-shorts-enabled a[href*="/shorts/"],
+body.hide-shorts-enabled ytd-thumbnail[href*="/shorts/"],
+body.hide-shorts-enabled ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+body.hide-shorts-enabled ytd-guide-entry-renderer[title="Shorts"] {
+    display: none !important;
+}
+
+/* 2. Hide Feed & Recommendations */
+body.hide-feed-enabled #primary ytd-rich-grid-renderer,
+/* Home Feed */
+body.hide-feed-enabled #secondary #related,
+/* Sidebar Recommendations */
+body.hide-feed-enabled ytd-watch-next-secondary-results-renderer {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* 3. Hide Comments */
+body.hide-comments-enabled #comments,
+body.hide-comments-enabled ytd-comments {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* 4. Motivation Mode Styling */
+body.motivation-mode-enabled {
+    /* Optional: Hide background if we want pure focus */
+}
+
+body.motivation-mode-enabled .social-sentry-quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    margin-top: 20px;
+    text-align: center;
+    color: #e0e0e0;
+    font-family: "YouTube Sans", Roboto, sans-serif;
+    animation: fadeIn 0.8s ease-in;
+}
+
+body.motivation-mode-enabled .quote-text {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+body.motivation-mode-enabled .quote-author {
+    font-size: 16px;
+    font-weight: 500;
+    color: #4ade80;
+    /* Brand Accent */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
