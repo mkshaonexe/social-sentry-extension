@@ -12,7 +12,8 @@
   ],
   "host_permissions": [
     "*://*.facebook.com/*",
-    "https://*.youtube.com/*"
+    "https://*.youtube.com/*",
+    "*://*.instagram.com/*"
   ],
   "action": {
     "default_popup": "popup/popup.html",
@@ -47,6 +48,18 @@
       ],
       "css": [
         "content/youtube.css"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "*://*.instagram.com/*"
+      ],
+      "js": [
+        "content/instagram.js"
+      ],
+      "css": [
+        "content/instagram.css"
       ],
       "run_at": "document_start"
     }
