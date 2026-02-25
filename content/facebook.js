@@ -85,14 +85,17 @@
     }
 
     // --- Redirect Logic ---
+    let isGoingBack = false;
     function checkRedirects() {
         // If blocking shorts is enabled and user tries to view a single reel
         if (currentSettings.global_blockShorts) {
             if (isOnReelsRoute() || isOnSingleReelRoute()) {
-                // Redirect to main feed (or blank if feed is blocked, but safely away from reels)
-                // If feed is blocked, they usually see a quote or blank page on home.
-                // Just redirect to root.
-                location.replace('https://www.facebook.com/?ref=social_sentry_redirect');
+                if (!isGoingBack) {
+                    isGoingBack = true;
+                    // Go one step back in history instead of redirecting to home
+                    history.back();
+                    setTimeout(() => { isGoingBack = false; }, 1000);
+                }
             }
         }
     }
