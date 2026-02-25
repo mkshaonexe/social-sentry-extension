@@ -13,7 +13,7 @@ body.hide-shorts-enabled ytd-guide-entry-renderer[title="Shorts"] {
 }
 
 /* 2. Hide Feed & Recommendations */
-body.hide-feed-enabled #primary ytd-rich-grid-renderer,
+body.hide-feed-enabled ytd-browse[page-subtype="home"] #primary ytd-rich-grid-renderer,
 /* Home Feed */
 body.hide-feed-enabled #secondary #related,
 /* Sidebar Recommendations */
