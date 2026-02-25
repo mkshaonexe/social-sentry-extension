@@ -22,6 +22,26 @@ body.hide-feed-enabled ytd-watch-next-secondary-results-renderer {
     visibility: hidden !important;
 }
 
+/* Add Feed Hidden text */
+body.hide-feed-enabled ytd-browse[page-subtype="home"] #primary {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    min-height: 50vh !important;
+    padding-top: 100px !important;
+}
+
+body.hide-feed-enabled ytd-browse[page-subtype="home"] #primary::after {
+    content: "Feed hidden by Social Sentry \\A Stay focused";
+    white-space: pre-wrap;
+    text-align: center;
+    color: #4ade80;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Inter', "YouTube Sans", Roboto, sans-serif;
+    opacity: 0.9;
+}
+
 /* 3. Hide Comments */
 body.hide-comments-enabled #comments,
 body.hide-comments-enabled ytd-comments {

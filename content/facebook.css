@@ -55,12 +55,15 @@ html[data-hide-home-feed="true"] [role="main"] {
 }
 
 html[data-hide-home-feed="true"] [role="main"]::after {
-    /* Motivation placeholder if we wanted to add one for FB too */
-    content: "Feed Hidden. Social Sentry. Stay Focused.";
+    content: "Feed hidden by Social Sentry \\A Stay focused";
+    white-space: pre-wrap;
+    text-align: center;
     color: #4ade80;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     opacity: 0.9;
+    margin-top: 50px;
 }
 
 /* 3. Block Notification Badges */

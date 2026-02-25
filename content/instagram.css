@@ -22,3 +22,23 @@ html[data-block-reels="true"] a[href^="/reels/"] {
 html[data-block-reels="true"] a[href^="/reel/"] {
     display: none !important;
 }
+
+/* Add Feed Hidden text */
+html[data-hide-home-feed="true"] main[role="main"] {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    min-height: 50vh !important;
+    padding-top: 100px !important;
+}
+
+html[data-hide-home-feed="true"] main[role="main"]::after {
+    content: "Feed hidden by Social Sentry \\A Stay focused";
+    white-space: pre-wrap;
+    text-align: center;
+    color: #4ade80;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    opacity: 0.9;
+}
