@@ -20,11 +20,24 @@ Developed by **MK Shaon**.
 
 ## Installation
 
-1. Clone or download this repository.
-2. Open Chrome and navigate to `chrome://extensions`.
-3. Enable **Developer mode** (top right).
-4. Click **Load unpacked**.
-5. Select the `social-sentry` folder from this repository.
+### 🌐 Chrome Web Store (Recommended)
+You can install the extension directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/social-sentry-%E2%80%94-focus-mod/ochghidlhpajencdlhlponjpgpfaghii).
+
+### 🛠️ Manual Installation (Developer Mode)
+If you prefer to install it manually from this repository:
+1. Go to the [Releases](../../releases) page and download the latest version, or clone/download this repository.
+2. Unzip the downloaded file if necessary.
+3. Open Chrome and navigate to `chrome://extensions`.
+4. Enable **Developer mode** (toggle in the top right).
+5. Click **Load unpacked**.
+6. Select the `social-sentry` folder.
+
+## 📱 Other Platforms
+
+Social Sentry is also available on other devices!
+- **Android App**: We have a native Android app that blocks reels, short-form scrolling, limits app usage, and blocks adult content. [Get it on the Google Play Store](https://play.google.com/store/apps/details?id=com.socialsentry.ai).
+- **Desktop Software**: We also offer a dedicated desktop software version.
+- **Website**: Learn more at [socialsentry.online](https://socialsentry.online) or [socialsentry.app](https://socialsentry.app).
 
 ## Development
 
