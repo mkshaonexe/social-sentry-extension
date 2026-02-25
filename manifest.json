@@ -1,13 +1,14 @@
 {
   "manifest_version": 3,
   "name": "Social Sentry - Focus Mode",
-  "version": "1.0.0",
+  "version": "1.5.8",
   "description": "Block short videos, feeds, and distractions on Facebook and YouTube. Stay focused with Social Sentry.",
   "author": "MK Shaon",
   "permissions": [
     "storage",
     "activeTab",
-    "webNavigation"
+    "webNavigation",
+    "alarms"
   ],
   "host_permissions": [
     "*://*.facebook.com/*",

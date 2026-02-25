@@ -5,9 +5,9 @@
 const DEFAULT_SETTINGS = {
   // Global Toggles
   global_blockShorts: true,       // Blocks FB Reels & Stories + YT Shorts
-  global_blockFeed: true,         // Blocks FB Feed + YT Feed/Recs
-  global_blockNotifications: true,// Blocks FB Notification Badge
-  
+  global_blockFeed: false,        // Blocks FB Feed + YT Feed/Recs (Default OFF)
+  global_blockNotifications: false,// Blocks FB Notification Badge (Default OFF)
+
   // Platform Specific Extras
   global_blockComments: false,    // Blocks YT Comments
   global_motivationMode: false    // YT Motivation Mode
@@ -36,8 +36,31 @@ chrome.webNavigation.onBeforeNavigate.addListener(async (details) => {
   if (details.frameId !== 0) return; // Only main frame
 
   const { global_blockShorts } = await chrome.storage.local.get('global_blockShorts');
-  
+
   if (global_blockShorts && details.url.includes('/shorts/')) {
     chrome.tabs.update(details.tabId, { url: 'https://www.youtube.com/' });
   }
 }, { url: [{ urlContains: '/shorts/' }] });
+
+// --- Alarm for Timed Toggle-Off ---
+const ALARM_NAME = 'enableShortsBlocker';
+
+chrome.storage.onChanged.addListener((changes) => {
+  // If shortsReenableAt is set, create the alarm
+  if (changes.shortsReenableAt && changes.shortsReenableAt.newValue) {
+    const reenableTime = changes.shortsReenableAt.newValue;
+    chrome.alarms.create(ALARM_NAME, {
+      when: reenableTime
+    });
+  }
+});
+
+chrome.alarms.onAlarm.addListener((alarm) => {
+  if (alarm.name === ALARM_NAME) {
+    // Re-enable the shorts blocker and clear the reenable timestamp
+    chrome.storage.local.set({
+      global_blockShorts: true,
+      shortsReenableAt: null
+    });
+  }
+});

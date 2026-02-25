@@ -8,7 +8,7 @@
 (function () {
     const DEFAULT_SETTINGS = {
         global_blockShorts: true,
-        global_blockFeed: true,
+        global_blockFeed: false,
         global_blockComments: false,
         global_motivationMode: false
     };

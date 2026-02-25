@@ -7,8 +7,8 @@
 (function () {
     const DEFAULT_SETTINGS = {
         global_blockShorts: true,
-        global_blockFeed: true,
-        global_blockNotifications: true
+        global_blockFeed: false,
+        global_blockNotifications: false
     };
 
     let currentSettings = { ...DEFAULT_SETTINGS };

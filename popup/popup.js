@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         global_motivationMode: document.getElementById('global_motivationMode')
     };
 
+    // Timer Modal Elements
+    const timerModal = document.getElementById('timerModal');
+    const btn1min = document.getElementById('btn1min');
+    const btn5min = document.getElementById('btn5min');
+    const btn10min = document.getElementById('btn10min');
+    const btnCancel = document.getElementById('btnCancelTimer');
+
     // Load initial state
     const settings = await loadSettings();
 
@@ -22,10 +29,43 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Add listener
             element.addEventListener('change', (e) => {
-                saveSetting(key, e.target.checked);
+                if (key === 'global_blockShorts' && !e.target.checked) {
+                    // Prevent immediate save, show modal
+                    e.target.checked = true; // revert visually until they pick a time
+                    timerModal.classList.add('show');
+                } else {
+                    // For all other toggles or turning Shorts ON
+                    if (key === 'global_blockShorts' && e.target.checked) {
+                        // Clear any pending alarm
+                        chrome.storage.local.set({ shortsReenableAt: null });
+                    }
+                    saveSetting(key, e.target.checked);
+                }
             });
         }
     }
+
+    // Modal Action Handlers
+    function setTimer(minutes) {
+        const reenableAt = Date.now() + minutes * 60 * 1000;
+
+        // Save both the toggle off state and the alarm timestamp
+        chrome.storage.local.set({
+            global_blockShorts: false,
+            shortsReenableAt: reenableAt
+        }, () => {
+            toggles.global_blockShorts.checked = false;
+            timerModal.classList.remove('show');
+        });
+    }
+
+    btn1min.addEventListener('click', () => setTimer(1));
+    btn5min.addEventListener('click', () => setTimer(5));
+    btn10min.addEventListener('click', () => setTimer(10));
+
+    btnCancel.addEventListener('click', () => {
+        timerModal.classList.remove('show');
+    });
 
 });
 
