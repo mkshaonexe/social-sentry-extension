@@ -26,13 +26,12 @@ body.hide-feed-enabled ytd-watch-next-secondary-results-renderer {
 body.hide-feed-enabled ytd-browse[page-subtype="home"] #primary {
     display: flex !important;
     justify-content: center !important;
-    align-items: flex-start !important;
-    min-height: 50vh !important;
-    padding-top: 100px !important;
+    align-items: center !important;
+    min-height: 70vh !important;
 }
 
 body.hide-feed-enabled ytd-browse[page-subtype="home"] #primary::after {
-    content: "Feed hidden by Social Sentry \\A Stay focused";
+    content: "Feed hidden. Social Sentry \\A Stay focused";
     white-space: pre-wrap;
     text-align: center;
     color: #4ade80;

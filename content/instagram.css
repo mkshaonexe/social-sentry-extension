@@ -27,13 +27,12 @@ html[data-block-reels="true"] a[href^="/reel/"] {
 html[data-hide-home-feed="true"] main[role="main"] {
     display: flex !important;
     justify-content: center !important;
-    align-items: flex-start !important;
-    min-height: 50vh !important;
-    padding-top: 100px !important;
+    align-items: center !important;
+    min-height: 70vh !important;
 }
 
 html[data-hide-home-feed="true"] main[role="main"]::after {
-    content: "Feed hidden by Social Sentry \\A Stay focused";
+    content: "Feed hidden. Social Sentry \\A Stay focused";
     white-space: pre-wrap;
     text-align: center;
     color: #4ade80;
