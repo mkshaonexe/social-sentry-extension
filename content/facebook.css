@@ -7,9 +7,12 @@ html[data-block-reels="true"] [aria-label*="Reel" i],
 html[data-block-reels="true"] a[href*="/reels/"],
 html[data-block-reels="true"] a[href*="/reel/"],
 html[data-block-reels="true"] div[role="article"]:has(a[href*="/reel/"]),
-html[data-block-reels="true"] div[role="main"] div:has(> h3:contains("Reels")), /* Heuristic */
-html[data-block-reels="true"] .x1i10hfl:has(a[href*="/reels/"]) /* Generic container */
-{
+html[data-block-reels="true"] div[role="main"] div:has(> h3:contains("Reels")),
+/* Heuristic */
+html[data-block-reels="true"] .x1i10hfl:has(a[href*="/reels/"])
+
+/* Generic container */
+    {
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
@@ -19,8 +22,7 @@ html[data-block-reels="true"] .x1i10hfl:has(a[href*="/reels/"]) /* Generic conta
 html[data-block-stories="true"] [aria-label*="Stories" i],
 html[data-block-stories="true"] a[href*="/stories/"],
 html[data-block-stories="true"] div[id^="stories"],
-html[data-block-stories="true"] div[role="region"][aria-label*="Stories"]
-{
+html[data-block-stories="true"] div[role="region"][aria-label*="Stories"] {
     display: none !important;
     visibility: hidden !important;
     height: 0 !important;
@@ -30,8 +32,8 @@ html[data-block-stories="true"] div[role="region"][aria-label*="Stories"]
 /* 2. Block Home Feed */
 html[data-hide-home-feed="true"] [role="feed"],
 html[data-hide-home-feed="true"] [data-pagelet^="FeedUnit"],
-html[data-hide-home-feed="true"] [data-pagelet*="VideoHome"]
-{
+html[data-hide-home-feed="true"] [data-pagelet*="VideoHome"],
+html[data-hide-home-feed="true"] div.x193iq5w.xvue9z.x17zi3g0.x1ceravr.x1v0nzow {
     display: none !important;
     visibility: hidden !important;
 }
@@ -39,8 +41,7 @@ html[data-hide-home-feed="true"] [data-pagelet*="VideoHome"]
 /* Hide sidebars when feed is hidden for a cleaner "Focus Mode" */
 html[data-hide-sidebars="true"] [role="complementary"],
 html[data-hide-sidebars="true"] [data-pagelet^="LeftRail"],
-html[data-hide-sidebars="true"] [data-pagelet^="RightRail"]
-{
+html[data-hide-sidebars="true"] [data-pagelet^="RightRail"] {
     display: none !important;
     visibility: hidden !important;
 }
@@ -52,6 +53,7 @@ html[data-hide-home-feed="true"] [role="main"] {
     align-items: center;
     min-height: 50vh;
 }
+
 html[data-hide-home-feed="true"] [role="main"]::after {
     /* Motivation placeholder if we wanted to add one for FB too */
     content: "Feed Hidden. Stay Focused.";
@@ -64,8 +66,7 @@ html[data-hide-home-feed="true"] [role="main"]::after {
 /* 3. Block Notification Badges */
 html[data-hide-notifications="true"] [aria-label*="Notifications"] span,
 html[data-hide-notifications="true"] [aria-label*="Messenger"] span,
-html[data-hide-notifications="true"] a[href*="notifications"] span
-{
+html[data-hide-notifications="true"] a[href*="notifications"] span {
     display: none !important;
     visibility: hidden !important;
     opacity: 0 !important;
