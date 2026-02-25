@@ -1,4 +1,5 @@
 /* Social Sentry - YouTube CSS Hiding Rules */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* 1. Hide Shorts UI */
 body.hide-shorts-enabled ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
@@ -42,7 +43,7 @@ body.motivation-mode-enabled .social-sentry-quote {
     margin-top: 20px;
     text-align: center;
     color: #e0e0e0;
-    font-family: "YouTube Sans", Roboto, sans-serif;
+    font-family: 'Inter', "YouTube Sans", Roboto, sans-serif;
     animation: fadeIn 0.8s ease-in;
 }
 
