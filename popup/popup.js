@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     const btn10min = document.getElementById('btn10min');
     const btnCancel = document.getElementById('btnCancelTimer');
 
+    // Countdown element
+    const shortsCountdown = document.getElementById('shorts-countdown');
+    let countdownInterval = null;
+
     // Load initial state
     const settings = await loadSettings();
 
@@ -38,6 +42,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     if (key === 'global_blockShorts' && e.target.checked) {
                         // Clear any pending alarm
                         chrome.storage.local.set({ shortsReenableAt: null });
+                        if (countdownInterval) clearInterval(countdownInterval);
+                        shortsCountdown.classList.add('hidden');
                     }
                     saveSetting(key, e.target.checked);
                 }
@@ -56,7 +62,43 @@ document.addEventListener('DOMContentLoaded', async () => {
         }, () => {
             toggles.global_blockShorts.checked = false;
             timerModal.classList.remove('show');
+            startVisualCountdown(reenableAt);
         });
+    }
+
+    function startVisualCountdown(reenableAt) {
+        if (countdownInterval) clearInterval(countdownInterval);
+
+        function updateDisplay() {
+            const now = Date.now();
+            if (now >= reenableAt) {
+                // Time's up
+                clearInterval(countdownInterval);
+                shortsCountdown.classList.add('hidden');
+                toggles.global_blockShorts.checked = true;
+                return;
+            }
+
+            const remainingSec = Math.floor((reenableAt - now) / 1000);
+            const m = Math.floor(remainingSec / 60);
+            const s = remainingSec % 60;
+            const formatted = `${m}:${s < 10 ? '0' : ''}${s}`;
+
+            shortsCountdown.querySelector('span').textContent = formatted;
+            shortsCountdown.classList.remove('hidden');
+        }
+
+        updateDisplay();
+        countdownInterval = setInterval(updateDisplay, 1000);
+    }
+
+    // Check if there's an ongoing timer on load
+    if (settings.shortsReenableAt && settings.shortsReenableAt > Date.now()) {
+        startVisualCountdown(settings.shortsReenableAt);
+    } else if (settings.shortsReenableAt && settings.shortsReenableAt <= Date.now() && !settings.global_blockShorts) {
+        // Edge case: timer expired while popup was closed
+        shortsCountdown.classList.add('hidden');
+        toggles.global_blockShorts.checked = true;
     }
 
     btn1min.addEventListener('click', () => setTimer(1));

@@ -164,6 +164,20 @@ body {
     color: var(--text-muted);
 }
 
+.card-countdown {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent-green);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-countdown.hidden {
+    display: none;
+}
+
 /* Switch */
 .switch {
     position: relative;
